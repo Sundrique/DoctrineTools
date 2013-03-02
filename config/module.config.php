@@ -10,18 +10,6 @@ return array(
 							'controller' => 'migrations',
 							'action' => 'index'
 						)
-						/*'route' => 'doctrine:migrations:diff'*/
-						/*'route' => 'doctrine (migrations|orm):controller (diff|execute|generate|migrate|status|version|generateEntities):action [--dir=] [--namespace=] [--write-sql=]',
-						'defaults' => array(
-							'controller' => 'migrations',
-							'action' => 'index'
-						)*/
-
-						/*'route' => 'doctrine migrations diff',
-						'defaults' => array(
-							'controller' => 'migrations',
-							'action' => 'index'
-						)*/
 					)
 				)
 			)
@@ -29,8 +17,7 @@ return array(
 	),
 	'controllers' => array(
 		'invokables' => array(
-			'migrations' => 'DoctrineTools\Controller\MigrationsController'/*,
-			'orm' => 'DoctrineTools\Controller\ORMController'*/
+			'migrations' => 'DoctrineTools\Controller\MigrationsController'
 		)
 	),
 	'route_manager' => array(
@@ -43,9 +30,6 @@ return array(
 			'directory' => 'data/DoctrineTools/Migrations',
 			'namespace' => 'DoctrineTools\Migrations',
 			'table' => 'migrations'
-		)/*,
-		'orm' => array(
-			'dir' => 'data/DoctrineTools/Entities'
-		)*/
+		)
 	)
 );
