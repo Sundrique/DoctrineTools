@@ -1,0 +1,161 @@
+<?php
+
+namespace DoctrineToolsTest\Controller;
+
+use DoctrineToolsTest\Bootstrap;
+use Zend\Http\Request;
+use Zend\Http\Response;
+use Zend\Test\PHPUnit\Controller\AbstractConsoleControllerTestCase;
+use Zend\Code\Reflection\ClassReflection;
+use Zend\Authentication\Adapter\Exception\InvalidArgumentException;
+
+class MigrationsControllerTest extends AbstractConsoleControllerTestCase {
+
+	/*private static $MIGRATIONS_DIR = 'DoctrineTestMigrations';
+
+	private static $MIGRATIONS_NAMESPACE = 'DoctrineTestMigrations';
+
+	private static $MIGRATIONS_SQL_FILE = 'migrations.sql';*/
+
+	public function setUp() {
+		$this->setApplicationConfig(
+			include __DIR__ . '/../../TestConfig.php.dist'
+		);
+
+		/*if (!file_exists(self::$MIGRATIONS_DIR)) {
+			mkdir(self::$MIGRATIONS_DIR);
+		}*/
+
+		parent::setUp();
+
+		/*$testConfig = $this->getApplicationServiceLocator()->get('Config');
+		$testConfig['doctrinetools']['migrations']['dir'] = self::$MIGRATIONS_DIR;
+		$testConfig['doctrinetools']['migrations']['namespace'] = self::$MIGRATIONS_NAMESPACE;
+
+		$this->getApplicationServiceLocator()->setAllowOverride(true);
+		$this->getApplicationServiceLocator()->setService('Config', $testConfig);*/
+	}
+
+	public function tearDown() {
+		/*self::removeDir(self::$MIGRATIONS_DIR);
+
+		if (file_exists(self::$MIGRATIONS_SQL_FILE)) {
+			unlink(self::$MIGRATIONS_SQL_FILE);
+		}*/
+
+		parent::tearDown();
+	}
+
+	public function testGenerateActionCanBeAccessed() {
+		$this->dispatch('list migrations');
+
+		$this->assertResponseStatusCode(0);
+		$this->assertModuleName('doctrinetools');
+		$this->assertControllerName('migrations');
+		$this->assertControllerClass('migrationscontroller');
+		$this->assertMatchedRouteName('doctrinetools');
+	}
+
+	/*public function testGetConfigurationFromConfig() {
+		$this->dispatch('doctrine migrations generate');
+
+		$migrationsConfig = $this->getController()->getConfiguration();
+
+		$this->assertEquals(self::$MIGRATIONS_DIR, $migrationsConfig['dir']);
+		$this->assertEquals(self::$MIGRATIONS_NAMESPACE, $migrationsConfig['namespace']);
+	}
+
+	public function testGetConfigurationFromParams() {
+		$this->dispatch(
+			'doctrine migrations generate'.
+			' --dir=' . self::$MIGRATIONS_DIR.
+			' --namespace=' . self::$MIGRATIONS_NAMESPACE
+		);
+
+		$migrationsConfig = $this->getController()->getConfiguration();
+
+		$this->assertEquals(self::$MIGRATIONS_DIR, $migrationsConfig['dir']);
+		$this->assertEquals(self::$MIGRATIONS_NAMESPACE, $migrationsConfig['namespace']);
+	}
+
+	public function testDiffActionCanBeAccessed() {
+		$this->dispatch('doctrine migrations diff');
+
+		$this->assertResponseStatusCode(0);
+		$this->assertModuleName('doctrinetools');
+		$this->assertControllerName('migrations');
+		$this->assertControllerClass('migrationscontroller');
+		$this->assertMatchedRouteName('doctrinetools');
+	}
+
+	public function testGenerateMigration() {
+		$controller = new \DoctrineTools\Controller\MigrationsController();
+
+		$config = array(
+			'dir' => self::$MIGRATIONS_DIR,
+			'namespace' => self::$MIGRATIONS_NAMESPACE
+		);
+		$up = '$upMethod = true;';
+		$down = '$downMethod = true;';
+		$controller->generateMigration($config, $up, $down);
+
+		$files = scandir(self::$MIGRATIONS_DIR);
+
+		$path = self::$MIGRATIONS_DIR . '/' . $files[2];
+
+		require_once($path);
+
+		$className = self::$MIGRATIONS_NAMESPACE.'\\'.str_replace('.php', '', $files[2]);
+		$classReflection = new ClassReflection($className);
+
+		$upMethod = $classReflection->getMethod('up');
+		$downMethod = $classReflection->getMethod('down');
+
+		$this->assertEquals($up, trim($upMethod->getBody()));
+		$this->assertEquals($down, trim($downMethod->getBody()));
+	}
+
+	public function testExecuteActionCanBeAccessed() {
+		$this->dispatch('doctrine migrations execute');
+
+		$this->assertResponseStatusCode(0);
+		$this->assertModuleName('doctrinetools');
+		$this->assertControllerName('migrations');
+		$this->assertControllerClass('migrationscontroller');
+		$this->assertMatchedRouteName('doctrinetools');
+	}
+
+	public function testWritesSql() {
+		$sql = "
+			CREATE TABLE IF NOT EXISTS `migrations` (
+				`id` int(11) NOT NULL AUTO_INCREMENT,
+				`version` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+				PRIMARY KEY (`id`)
+			) ENGINE=InnoDB DEFAULT AUTO_INCREMENT=1;
+		";
+
+		$this->dispatch(
+			'doctrine migrations execute'.
+			' --write-sql='.self::$MIGRATIONS_SQL_FILE
+		);
+
+		$resultSql = file_get_contents(self::$MIGRATIONS_SQL_FILE);
+
+		$this->assertEquals($sql, $resultSql);
+	}
+
+	private static function removeDir($dir) {
+		$files = array_diff(scandir($dir), array('.', '..'));
+		foreach ($files as $file) {
+			(is_dir($dir . '/' . $file)) ? self::removeDir($dir . '/' . $file) : unlink($dir . '/' . $file);
+		}
+		return rmdir($dir);
+	}
+
+	private function getController() {
+		$routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
+		$controllerIdentifier = $routeMatch->getParam('controller');
+		$controllerManager = $this->getApplicationServiceLocator()->get('ControllerLoader');
+		return $controllerManager->get($controllerIdentifier);
+	}*/
+}
