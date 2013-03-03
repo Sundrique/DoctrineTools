@@ -3,14 +3,13 @@
 namespace DoctrineTools\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Http\Request as HttpRequest;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\MethodGenerator;
 use Zend\Code\Generator\FileGenerator;
 use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
 use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
 use Doctrine\DBAL\Migrations\Configuration\Configuration;
-use Symfony\Component\Console\Input\StringInput;
+use DoctrineTools\Component\Console\Input\StringInput;
 
 class MigrationsController extends AbstractActionController {
 
