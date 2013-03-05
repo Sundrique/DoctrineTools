@@ -7,7 +7,7 @@ use Zend\Http\Request;
 use Zend\Http\Response;
 use Zend\Test\PHPUnit\Controller\AbstractConsoleControllerTestCase;
 
-class MigrationsControllerTest extends AbstractConsoleControllerTestCase {
+class IndexControllerTest extends AbstractConsoleControllerTestCase {
 
 	private static $MIGRATIONS_DIRECTORY = 'DoctrineTestMigrations';
 
@@ -42,16 +42,13 @@ class MigrationsControllerTest extends AbstractConsoleControllerTestCase {
 	}
 
 	public function testIndexActionCanBeAccessed() {
-		$request = new \Zend\Console\Request(array(
-												  'scriptname.php',
-												  'migrations:generate'
-											 ));
+		$request = new \Zend\Console\Request(array('scriptname.php', 'migrations:generate'));
 		$this->dispatch($request);
 
 		$this->assertResponseStatusCode(0);
 		$this->assertModuleName('doctrinetools');
-		$this->assertControllerName('migrations');
-		$this->assertControllerClass('migrationscontroller');
+		$this->assertControllerName('doctrinetools\controller\index');
+		$this->assertControllerClass('indexcontroller');
 		$this->assertActionName('index');
 		$this->assertMatchedRouteName('doctrinetools');
 	}

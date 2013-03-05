@@ -6,8 +6,12 @@ use Zend\Stdlib\RequestInterface as Request;
 use Zend\Mvc\Router\Console\RouteMatch;
 use Zend\Console\Request as ConsoleRequest;
 use Zend\Mvc\Router\Exception;
+use Zend\ServiceManager\ServiceLocatorAwareInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
-class Colon implements RouteInterface {
+class SymfonyCli implements RouteInterface, ServiceLocatorAwareInterface {
+
+	private $routePluginManager;
 
 	/**
 	 * Default values.
@@ -20,7 +24,7 @@ class Colon implements RouteInterface {
 	 * Create a new colon console route.
 	 *
 	 * @param  array $defaults
-	 * @return Colon
+	 * @return SymfonyCli
 	 */
 	public function __construct(array $defaults = array()) {
 		$this->defaults = $defaults;
@@ -31,6 +35,9 @@ class Colon implements RouteInterface {
 	 * @return null|\Zend\Mvc\Router\Console\RouteMatch|\Zend\Mvc\Router\RouteMatch
 	 */
 	public function match(Request $request) {
+		$routePluginManager = $this->getServiceLocator();
+		$serviceLocator = $routePluginManager->getServiceLocator();
+
 		if (!$request instanceof ConsoleRequest) {
 			return null;
 		}
@@ -38,15 +45,9 @@ class Colon implements RouteInterface {
 		$params = $request->getParams()->toArray();
 		$matches = array();
 
-		if ($params[0] === 'list') {
-			$namespace = $params[1];
-		} else {
-			$namespace = $params[0];
-		}
+		$cli = $serviceLocator->get('doctrinetools.console_application');
 
-		$namespace = explode(':', $namespace);
-
-		if ($namespace[0] !== 'migrations') {
+		if (!$cli->has($params[0])) {
 			return null;
 		}
 
@@ -71,7 +72,7 @@ class Colon implements RouteInterface {
 
 	/**
 	 * @param array $options
-	 * @return Colon|void
+	 * @return SymfonyCli|void
 	 * @throws \Zend\Mvc\Router\Exception\InvalidArgumentException
 	 */
 	public static function factory($options = array()) {
@@ -88,5 +89,23 @@ class Colon implements RouteInterface {
 		return new static (
 			$options['defaults']
 		);
+	}
+
+	/**
+	 * Set service locator
+	 *
+	 * @param ServiceLocatorInterface $routePluginManager
+	 */
+	public function setServiceLocator(ServiceLocatorInterface $routePluginManager) {
+		$this->routePluginManager = $routePluginManager;
+	}
+
+	/**
+	 * Get service locator
+	 *
+	 * @return ServiceLocatorInterface
+	 */
+	public function getServiceLocator() {
+		return $this->routePluginManager;
 	}
 }
