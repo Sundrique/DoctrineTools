@@ -1,4 +1,5 @@
 <?php
+
 namespace DoctrineTools;
 
 use Zend\ModuleManager\Feature;
@@ -9,6 +10,12 @@ use DoctrineTools\Component\Console\Output\PropertyOutput;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 
+/**
+ * Doctrine Tools module
+ *
+ * @license MIT
+ * @author Aleksandr Sandrovskiy <a.sandrovsky@gmail.com>
+ */
 class Module implements Feature\AutoloaderProviderInterface, Feature\ConfigProviderInterface {
 
 	private $serviceManager;

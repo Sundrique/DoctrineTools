@@ -9,8 +9,17 @@ use Zend\Mvc\Router\Exception;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
+/**
+ * Route matching commands in Symfony CLI
+ *
+ * @license MIT
+ * @author Aleksandr Sandrovskiy <a.sandrovsky@gmail.com>
+ */
 class SymfonyCli implements RouteInterface, ServiceLocatorAwareInterface {
 
+	/**
+	 * @var
+	 */
 	private $routePluginManager;
 
 	/**

@@ -5,8 +5,17 @@ namespace DoctrineTools\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use DoctrineTools\Component\Console\Input\StringInput;
 
+/**
+ * Index controller
+ *
+ * @license MIT
+ * @author Aleksandr Sandrovskiy <a.sandrovsky@gmail.com>
+ */
 class IndexController extends AbstractActionController {
 
+	/**
+	 * Index action
+	 */
 	public function indexAction() {
 
 		$request = $this->getRequest();

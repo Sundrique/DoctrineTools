@@ -9,10 +9,19 @@ use Zend\Mvc\Router\RoutePluginManager;
 
 class SymfonyCliTest extends TestCase {
 
+	/**
+	 * @var
+	 */
 	private $serviceLocator;
 
+	/**
+	 * @var
+	 */
 	private $routePluginManager;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function setUp() {
 		$this->serviceLocator = ServiceManagerFactory::getServiceManager();
 		$this->routePluginManager = new RoutePluginManager();
@@ -20,6 +29,9 @@ class SymfonyCliTest extends TestCase {
 		parent::setUp();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function tearDown() {
 		$this->serviceLocator = null;
 		parent::tearDown();

@@ -9,12 +9,24 @@ use Zend\Test\PHPUnit\Controller\AbstractConsoleControllerTestCase;
 
 class IndexControllerTest extends AbstractConsoleControllerTestCase {
 
+	/**
+	 * @var string
+	 */
 	private static $MIGRATIONS_DIRECTORY = 'DoctrineTestMigrations';
 
+	/**
+	 * @var string
+	 */
 	private static $MIGRATIONS_NAMESPACE = 'DoctrineTestMigrations';
 
+	/**
+	 * @var string
+	 */
 	private static $MIGRATIONS_TABLE = 'test_migrations';
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function setUp() {
 		$this->setApplicationConfig(
 			include __DIR__ . '/../../TestConfig.php.dist'
@@ -35,6 +47,9 @@ class IndexControllerTest extends AbstractConsoleControllerTestCase {
 		$this->getApplicationServiceLocator()->setService('Config', $testConfig);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function tearDown() {
 		self::removeDir(self::$MIGRATIONS_DIRECTORY);
 
@@ -53,6 +68,10 @@ class IndexControllerTest extends AbstractConsoleControllerTestCase {
 		$this->assertMatchedRouteName('doctrinetools');
 	}
 
+	/**
+	 * @param $dir
+	 * @return bool
+	 */
 	private static function removeDir($dir) {
 		$files = array_diff(scandir($dir), array('.', '..'));
 		foreach ($files as $file) {

@@ -7,13 +7,22 @@ use DoctrineToolsTest\Util\ServiceManagerFactory;
 
 class MigrationsCommandFactoryTest extends TestCase {
 
+	/**
+	 * @var
+	 */
 	private $serviceLocator;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function setUp() {
 		$this->serviceLocator = ServiceManagerFactory::getServiceManager();
 		parent::setUp();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function tearDown() {
 		$this->serviceLocator = null;
 		parent::tearDown();
