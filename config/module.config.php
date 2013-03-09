@@ -64,7 +64,7 @@ return array(
 			'doctrinetools.console_application' => function ($serviceManager) {
 				$helperSet = $serviceManager->get('doctrinetools.helper_set');
 
-				$cli = new \Symfony\Component\Console\Application('Doctrine Tools', '0.1');
+				$cli = new \Symfony\Component\Console\Application('Doctrine Tools', \DoctrineTools\Version::VERSION);
 				$cli->setCatchExceptions(true);
 				$cli->setAutoExit(false);
 				$cli->setHelperSet($helperSet);
