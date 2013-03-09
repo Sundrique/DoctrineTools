@@ -1,4 +1,6 @@
 <?php
+chdir(__DIR__);
+
 if (file_exists(__DIR__ . '/../../../vendor/autoload.php')) {
 	$loader = include __DIR__ . '/../../../vendor/autoload.php';
 } else {
@@ -6,6 +8,7 @@ if (file_exists(__DIR__ . '/../../../vendor/autoload.php')) {
 }
 
 $loader->add('DoctrineToolsTest\\', __DIR__);
+$loader->add('DoctrineTools\\', __DIR__ . '/../src/');
 
 if (file_exists(__DIR__ . '/TestConfig.php')) {
 	$config = require __DIR__ . '/TestConfig.php';

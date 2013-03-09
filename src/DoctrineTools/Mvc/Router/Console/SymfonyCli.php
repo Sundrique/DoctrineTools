@@ -43,15 +43,14 @@ class SymfonyCli implements RouteInterface, ServiceLocatorAwareInterface {
 		}
 
 		$params = $request->getParams()->toArray();
-		$matches = array();
 
 		$cli = $serviceLocator->get('doctrinetools.console_application');
 
-		if (!$cli->has($params[0])) {
+		if (!isset($params[0]) || !$cli->has($params[0])) {
 			return null;
 		}
 
-		return new RouteMatch(array_merge($this->defaults, $matches));
+		return new RouteMatch($this->defaults);
 	}
 
 	/**

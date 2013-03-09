@@ -3,8 +3,6 @@ namespace DoctrineToolsTest\Service;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\ServiceManager\ServiceManager;
-use Doctrine\DBAL\Migrations\Configuration\Configuration;
-use Doctrine\DBAL\Connection;
 use DoctrineToolsTest\Util\ServiceManagerFactory;
 
 class MigrationsCommandFactoryTest extends TestCase {
