@@ -25,10 +25,12 @@
 		"doctrine/doctrine-module": ">=0.7",
 		"doctrine/doctrine-orm-module": ">=0.7",
 		"doctrine/migrations": "dev-master",
+		"symfony/console": ">=2.0.13",
 		"zendframework/zend-stdlib": "2.*",
 		"zendframework/zend-mvc": "2.*",
 		"zendframework/zend-servicemanager": "2.*"
     },
+	"minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "DoctrineTools\\": "src/",
