@@ -20,7 +20,7 @@
 	"require": {
         "php": ">=5.3.3",
 		"doctrine/doctrine-orm-module": ">=0.7",
-		"doctrine/migrations": "dev-master"
+		"doctrine/migrations": "*"
     },
 	"minimum-stability": "dev",
 	"autoload": {
