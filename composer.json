@@ -30,8 +30,7 @@
 		"zendframework/zend-mvc": "2.*",
 		"zendframework/zend-servicemanager": "2.*"
     },
-	"minimum-stability": "dev",
-    "autoload": {
+	"autoload": {
         "psr-0": {
             "DoctrineTools\\": "src/",
             "DoctrineToolsTest\\": "tests/"
