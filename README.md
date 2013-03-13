@@ -52,3 +52,24 @@ return array(
 	)
 );
 ```
+
+Usage
+-----
+
+```sh
+$ /path/to/your/app/public/index.php <command>
+```
+
+Available commands
+------------------
+
+The following commands are currently available:
+
+* `help` Displays help for a command.
+* `list` Lists commands.
+* `migrations:diff` Generate a migration by comparing your current database to your mapping information.
+* `migrations:execute` Execute a single migration version up or down manually.
+* `migrations:generate` Generate a blank migration class.
+* `migrations:migrate` Execute a migration to a specified version or the latest available version.
+* `migrations:status` View the status of a set of migrations.
+* `migrations:version` Manually add and delete migration versions from the version table.
