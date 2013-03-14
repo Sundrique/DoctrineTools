@@ -86,22 +86,63 @@ return array(
 				$cli->setAutoExit(false);
 				$cli->setHelperSet($helperSet);
 				$cli->addCommands(array(
-					$serviceManager->get('doctrinetools.execute_command'),
-					$serviceManager->get('doctrinetools.generate_command'),
-					$serviceManager->get('doctrinetools.migrate_command'),
-					$serviceManager->get('doctrinetools.status_command'),
-					$serviceManager->get('doctrinetools.version_command'),
-					$serviceManager->get('doctrinetools.diff_command')
+					$serviceManager->get('doctrinetools.dbal.runsql'),
+					$serviceManager->get('doctrinetools.dbal.import'),
+
+					$serviceManager->get('doctrinetools.orm.clear-cache.metadata'),
+					$serviceManager->get('doctrinetools.orm.clear-cache.result'),
+					$serviceManager->get('doctrinetools.orm.clear-cache.query'),
+					$serviceManager->get('doctrinetools.orm.schema-tool.create'),
+					$serviceManager->get('doctrinetools.orm.schema-tool.update'),
+					$serviceManager->get('doctrinetools.orm.schema-tool.drop'),
+					$serviceManager->get('doctrinetools.orm.ensure-production-settings'),
+					$serviceManager->get('doctrinetools.orm.convert-d1-schema'),
+					$serviceManager->get('doctrinetools.orm.generate-repositories'),
+					$serviceManager->get('doctrinetools.orm.generate-entities'),
+					$serviceManager->get('doctrinetools.orm.generate-proxies'),
+					$serviceManager->get('doctrinetools.orm.convert-mapping'),
+					$serviceManager->get('doctrinetools.orm.run-dql'),
+					$serviceManager->get('doctrinetools.orm.validate-schema'),
+					$serviceManager->get('doctrinetools.orm.info'),
+
+					$serviceManager->get('doctrinetools.migrations.execute'),
+					$serviceManager->get('doctrinetools.migrations.generate'),
+					$serviceManager->get('doctrinetools.migrations.migrate'),
+					$serviceManager->get('doctrinetools.migrations.status'),
+					$serviceManager->get('doctrinetools.migrations.version'),
+					$serviceManager->get('doctrinetools.migrations.diff'),
 				));
 
 				return $cli;
 			},
-			'doctrinetools.generate_command' => new \DoctrineTools\Service\MigrationsCommandFactory('generate'),
-			'doctrinetools.execute_command' => new \DoctrineTools\Service\MigrationsCommandFactory('execute'),
-			'doctrinetools.migrate_command' => new \DoctrineTools\Service\MigrationsCommandFactory('migrate'),
-			'doctrinetools.status_command' => new \DoctrineTools\Service\MigrationsCommandFactory('status'),
-			'doctrinetools.version_command' => new \DoctrineTools\Service\MigrationsCommandFactory('version'),
-			'doctrinetools.diff_command' => new \DoctrineTools\Service\MigrationsCommandFactory('diff'),
+			// Migrations commands
+			'doctrinetools.migrations.generate' => new \DoctrineTools\Service\MigrationsCommandFactory('generate'),
+			'doctrinetools.migrations.execute' => new \DoctrineTools\Service\MigrationsCommandFactory('execute'),
+			'doctrinetools.migrations.migrate' => new \DoctrineTools\Service\MigrationsCommandFactory('migrate'),
+			'doctrinetools.migrations.status' => new \DoctrineTools\Service\MigrationsCommandFactory('status'),
+			'doctrinetools.migrations.version' => new \DoctrineTools\Service\MigrationsCommandFactory('version'),
+			'doctrinetools.migrations.diff' => new \DoctrineTools\Service\MigrationsCommandFactory('diff'),
+		),
+		'invokables' => array(
+			// DBAL commands
+			'doctrinetools.dbal.runsql' => '\Doctrine\DBAL\Tools\Console\Command\RunSqlCommand',
+			'doctrinetools.dbal.import' => '\Doctrine\DBAL\Tools\Console\Command\ImportCommand',
+			// ORM Commands
+			'doctrinetools.orm.clear-cache.metadata' => '\Doctrine\ORM\Tools\Console\Command\ClearCache\MetadataCommand',
+			'doctrinetools.orm.clear-cache.result' => '\Doctrine\ORM\Tools\Console\Command\ClearCache\ResultCommand',
+			'doctrinetools.orm.clear-cache.query' => '\Doctrine\ORM\Tools\Console\Command\ClearCache\QueryCommand',
+			'doctrinetools.orm.schema-tool.create' => '\Doctrine\ORM\Tools\Console\Command\SchemaTool\CreateCommand',
+			'doctrinetools.orm.schema-tool.update' => '\Doctrine\ORM\Tools\Console\Command\SchemaTool\UpdateCommand',
+			'doctrinetools.orm.schema-tool.drop' => '\Doctrine\ORM\Tools\Console\Command\SchemaTool\DropCommand',
+			'doctrinetools.orm.ensure-production-settings' => '\Doctrine\ORM\Tools\Console\Command\EnsureProductionSettingsCommand',
+			'doctrinetools.orm.convert-d1-schema' => '\Doctrine\ORM\Tools\Console\Command\ConvertDoctrine1SchemaCommand',
+			'doctrinetools.orm.generate-repositories' => '\Doctrine\ORM\Tools\Console\Command\GenerateRepositoriesCommand',
+			'doctrinetools.orm.generate-entities' => '\Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand',
+			'doctrinetools.orm.generate-proxies' => '\Doctrine\ORM\Tools\Console\Command\GenerateProxiesCommand',
+			'doctrinetools.orm.convert-mapping' => '\Doctrine\ORM\Tools\Console\Command\ConvertMappingCommand',
+			'doctrinetools.orm.run-dql' => '\Doctrine\ORM\Tools\Console\Command\RunDqlCommand',
+			'doctrinetools.orm.validate-schema' => '\Doctrine\ORM\Tools\Console\Command\ValidateSchemaCommand',
+			'doctrinetools.orm.info' => '\Doctrine\ORM\Tools\Console\Command\InfoCommand',
 		)
 	)
 );
