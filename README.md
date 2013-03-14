@@ -13,7 +13,7 @@ First, add the following line into your `composer.json` file:
 
 ```json
 "require": {
-	"sundrique/doctrine-tools": ">=0.1"
+	"sundrique/doctrine-tools": ">=0.2"
 }
 ```
 
