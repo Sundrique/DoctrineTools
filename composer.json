@@ -1,6 +1,6 @@
 {
     "name": "sundrique/doctrine-tools",
-    "description": "Zend Framework 2 Module unified endpoint for Doctrine command line tools",
+    "description": "Zend Framework 2 Module providing unified endpoint for Doctrine command line tools",
     "type": "library",
     "license": "MIT",
     "keywords": [
