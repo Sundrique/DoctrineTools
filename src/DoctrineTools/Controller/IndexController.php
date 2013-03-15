@@ -44,7 +44,7 @@ class IndexController extends AbstractActionController {
 			}
 		}
 
-		$input = new StringInput(implode(' ', $params));
+		$input = new StringInput(escapeshellcmd(implode(' ', $params)));
 
 		$cli = $this->getServiceLocator()->get('doctrinetools.console_application');
 
