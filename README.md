@@ -1,4 +1,4 @@
-Doctrine Tools
+Doctrine Tools [![Build Status](https://travis-ci.org/Sundrique/DoctrineTools.png?branch=master)](https://travis-ci.org/Sundrique/DoctrineTools)
 ==============
 
 Introduction
