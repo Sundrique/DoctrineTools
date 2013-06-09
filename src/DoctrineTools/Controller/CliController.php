@@ -27,7 +27,7 @@ use DoctrineTools\Component\Console\Input\StringInput;
  * @license MIT
  * @author Aleksandr Sandrovskiy <a.sandrovsky@gmail.com>
  */
-class IndexController extends AbstractActionController {
+class CliController extends AbstractActionController {
 
 	/**
 	 * Index action

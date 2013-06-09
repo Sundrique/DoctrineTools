@@ -16,7 +16,7 @@
  * and is licensed under the MIT license.
  */
 
-namespace DoctrineToolsTest\Component\Console\Output;
+namespace DoctrineORMModuleTest\Component\Console\Output;
 
 use PHPUnit_Framework_TestCase as TestCase;
 

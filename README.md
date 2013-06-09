@@ -1,6 +1,12 @@
 Doctrine Tools [![Build Status](https://travis-ci.org/Sundrique/DoctrineTools.png?branch=master)](https://travis-ci.org/Sundrique/DoctrineTools)
 ==============
 
+Important notice
+----------------
+
+Since this code was merged into [DoctrineORMModule](http://www.github.com/doctrine/DoctrineORMModule) and [DoctrineModule](https://github.com/doctrine/DoctrineModule) present module is no longer supported.
+Simply use aforenamed modules instead.
+
 Introduction
 ------------
 

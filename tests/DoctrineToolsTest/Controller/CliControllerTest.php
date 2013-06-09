@@ -23,7 +23,7 @@ use Zend\Http\Request;
 use Zend\Http\Response;
 use Zend\Test\PHPUnit\Controller\AbstractConsoleControllerTestCase;
 
-class IndexControllerTest extends AbstractConsoleControllerTestCase {
+class CliControllerTest extends AbstractConsoleControllerTestCase {
 
 	/**
 	 * @var string
@@ -79,7 +79,7 @@ class IndexControllerTest extends AbstractConsoleControllerTestCase {
 		$this->assertResponseStatusCode(0);
 		$this->assertModuleName('doctrinetools');
 		$this->assertControllerName('doctrinetools\controller\index');
-		$this->assertControllerClass('indexcontroller');
+		$this->assertControllerClass('clicontroller');
 		$this->assertActionName('index');
 		$this->assertMatchedRouteName('doctrinetools');
 	}

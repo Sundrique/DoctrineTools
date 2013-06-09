@@ -34,7 +34,7 @@ return array(
 	),
 	'controllers' => array(
 		'invokables' => array(
-			'DoctrineTools\Controller\Index' => 'DoctrineTools\Controller\IndexController'
+			'DoctrineTools\Controller\Index' => 'DoctrineTools\Controller\CliController'
 		)
 	),
 	'route_manager' => array(
