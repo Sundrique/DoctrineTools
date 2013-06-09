@@ -6,7 +6,7 @@ php:
 
 before_script:
   - cd ..
-  - composer create-project --repository-url="http://packages.zendframework.com" zendframework/skeleton-application:dev-master
+  - composer -n create-project --repository-url="http://packages.zendframework.com" zendframework/skeleton-application:dev-master
   - cd skeleton-application
   - composer require doctrine/migrations:dev-master
   - composer require sundrique/doctrine-tools:dev-master
